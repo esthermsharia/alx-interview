@@ -16,6 +16,7 @@ def printCodes(dict, file_s):
         if statusC_counter[key] != 0:
             print("{}: {}".format(key, dict[key]), flush=True)
 
+
 if __name__ == "__main__":
     try:
         for line in sys.stdin:
