@@ -16,7 +16,7 @@ def printCodes(dict, file_s):
     print("File size: {}".format(file_s), flush=True)
     for key in sorted(dict.keys()):
         if statusC_counter[key] != 0:
-            print("{}: {}".format(key,dict[key]), flush=True)
+            print("{}: {}".format(key, dict[key]), flush=True)
 
 
 def handler(signal_received, frame):
