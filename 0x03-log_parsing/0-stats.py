@@ -5,7 +5,7 @@ import re
 import sys
 from signal import signal, SIGINT
 import traceback
-counter = 0
+counter = 1
 file_size = 0
 statusC_counter = {200: 0, 301: 0, 400: 0,
                    401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
@@ -27,7 +27,6 @@ def handler(signal_received, frame):
 
 
 for line in sys.stdin:
-    counter = counter + 1
     split_string = re.split('- |"|"| " " ', str(line))
     statusC_and_file_s = split_string[-1]
     statusC = int(statusC_and_file_s.split()[0])
@@ -38,3 +37,4 @@ for line in sys.stdin:
     if counter % 10 == 0:
         printCodes(statusC_counter, file_size)
     signal(SIGINT, handler)
+    counter = counter + 1
