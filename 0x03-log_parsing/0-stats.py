@@ -31,7 +31,7 @@ if __name__ == "__main__":
                 # print("Status Code {} size {}".format(statusC, f_size))
                 if statusC in statusC_counter:
                     statusC_counter[statusC] += 1
-                    file_size = file_size + f_size
+                file_size = file_size + f_size
             except:
                 pass
         printCodes(statusC_counter, file_size)
