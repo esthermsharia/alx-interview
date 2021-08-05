@@ -26,7 +26,7 @@ try:
         if statusC in statusC_counter:
             statusC_counter[statusC] = statusC_counter[statusC] + 1
             file_size = file_size + f_size
-        if counter % 10 == 0:
+        if counter != 0 and counter % 10 == 0:
             printCodes(statusC_counter, file_size)
         counter = counter + 1
 except KeyboardInterrupt:
