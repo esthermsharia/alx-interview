@@ -3,7 +3,7 @@
 
 import re
 import sys
-counter = 1
+counter = 0
 file_size = 0
 statusC_counter = {200: 0, 301: 0, 400: 0,
                    401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
@@ -22,18 +22,19 @@ if __name__ == "__main__":
         for line in sys.stdin:
             split_string = re.split('- |"|"| " " ', str(line))
             statusC_and_file_s = split_string[-1]
+            if counter != 0 and counter % 10 == 0:
+                printCodes(statusC_counter, file_size)
+            counter = counter + 1
             try:
                 statusC = int(statusC_and_file_s.split()[0])
                 f_size = int(statusC_and_file_s.split()[1])
                 # print("Status Code {} size {}".format(statusC, f_size))
                 if statusC in statusC_counter:
-                    statusC_counter[statusC] = statusC_counter[statusC] + 1
+                    statusC_counter[statusC] += 1
                     file_size = file_size + f_size
             except:
                 pass
-            if counter != 0 and counter % 10 == 0:
-                printCodes(statusC_counter, file_size)
-            counter = counter + 1
+        printCodes(statusC_counter, file_size)
     except KeyboardInterrupt:
         printCodes(statusC_counter, file_size)
         raise
