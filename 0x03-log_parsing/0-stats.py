@@ -11,10 +11,10 @@ statusC_counter = {200: 0, 301: 0, 400: 0,
 
 def printCodes(dict, file_s):
     """Prints the status code and the number of times they appear"""
-    print("File size: {}".format(file_s), flush=True)
+    print("File size: {}".format(file_s))
     for key in sorted(dict.keys()):
         if statusC_counter[key] != 0:
-            print("{}: {}".format(key, dict[key]), flush=True)
+            print("{}: {}".format(key, dict[key]))
 
 
 if __name__ == "__main__":
