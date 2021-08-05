@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 """Performs log parsing from stdin"""
 
@@ -5,8 +6,8 @@ import re
 import sys
 counter = 0
 file_size = 0
-statusC_counter = {"200": 0, "301": "0", "400": 0,
-                   "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
+statusC_counter = {200: 0, 301: 0, 400: 0,
+                   401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 
 
 def printCodes(dict, file_s):
@@ -22,13 +23,12 @@ if __name__ == "__main__":
         for line in sys.stdin:
             split_string = re.split('- |"|"| " " ', str(line))
             statusC_and_file_s = split_string[-1]
-            split_line = line.split()
             if counter != 0 and counter % 10 == 0:
                 printCodes(statusC_counter, file_size)
             counter = counter + 1
             try:
-                statusC = split_line[-2]
-                f_size = int(split_line[-1])
+                statusC = int(statusC_and_file_s.split()[0])
+                f_size = int(statusC_and_file_s.split()[1])
                 # print("Status Code {} size {}".format(statusC, f_size))
                 if statusC in statusC_counter:
                     statusC_counter[statusC] += 1
