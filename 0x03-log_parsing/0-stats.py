@@ -11,10 +11,10 @@ statusC_counter = {200: 0, 301: 0, 400: 0,
 
 def printCodes(dict, file_s):
     """Prints the status code and the number of times they appear"""
-    print("File size: {}".format(file_s))
+    print("File size: {}".format(file_s), flush=True)
     for key in sorted(dict.keys()):
         if statusC_counter[key] != 0:
-            print("{}: {}".format(key, dict[key]))
+            print("{}: {}".format(key, dict[key]), flush=True)
 
 
 try:
@@ -23,6 +23,7 @@ try:
         statusC_and_file_s = split_string[-1]
         statusC = int(statusC_and_file_s.split()[0])
         f_size = int(statusC_and_file_s.split()[1])
+        # print("Status Code {} size {}".format(statusC, f_size))
         if statusC in statusC_counter:
             statusC_counter[statusC] = statusC_counter[statusC] + 1
             file_size = file_size + f_size
