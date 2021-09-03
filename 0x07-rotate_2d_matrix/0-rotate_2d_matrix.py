@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a function that rotates a 2d martrix"""
 
+
 def rotate_2d_matrix(matrix):
     """Rotate a 2d matrix by 90 degrees"""
     final = []
